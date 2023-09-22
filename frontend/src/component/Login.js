@@ -113,12 +113,14 @@ function Login() {
    result=await result.json()
    console.log(result);
    if(result.data.role==="seller"){
-    window.location.href='/seller'
+    navigate('/dashboard');
    }else{
     navigate('/home');
    }
    if(result.data){
      localStorage.setItem("user", JSON.stringify(result.token));
+     localStorage.setItem("data", JSON.stringify(result.data));
+
    }else{
     alert("please enter valid data")
    }

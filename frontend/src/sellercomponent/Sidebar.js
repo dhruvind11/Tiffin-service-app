@@ -1,6 +1,6 @@
 // Sidebar.js
 import React from 'react';
-
+import { Header } from './Header'
 const Sidebar = () => {
   return (
     <aside className="sidebar">

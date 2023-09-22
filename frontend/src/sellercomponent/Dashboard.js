@@ -1,15 +1,16 @@
 // Dashboard.js
 import React from 'react';
-import './styles.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './style.css';
+import  Header  from './Header'
 import SellerDashboard from './SellerDashboard';
 const Dashboard = () => {
   return (
+    <><Header/>
     <section className="dashboard">
      
       <SellerDashboard/>
       {/* Dashboard content goes here */}
-    </section>
+    </section></>
   );
 };
 

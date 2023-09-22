@@ -1,11 +1,14 @@
 import React from "react";
 import Cards from "./Cards";
 import "./Home.css";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 import { FaSearch, FaLocationArrow } from "react-icons/fa";
 
 function Home() {
   return (
     <>
+    <Navbar/>
       <div class="wrap ">
         <h1 className="mb-4"> Discover Tiffins in your Area: ) </h1>{" "}
         <div className='search'>

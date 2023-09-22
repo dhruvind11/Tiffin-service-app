@@ -1,9 +1,10 @@
 // OrderDetailsModal.js
 import React from 'react';
 import './OrderDetailsModal.css';
+import  Header  from './Header';
 
 const OrderDetailsModal = ({ order, onClose }) => {
-  return (
+  return (<><Header/>
     <div className="order-details-modal">
       <div className="modal-content">
         <span className="close" onClick={onClose}>
@@ -24,7 +25,7 @@ const OrderDetailsModal = ({ order, onClose }) => {
           {/* Add more order details as needed */}
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 

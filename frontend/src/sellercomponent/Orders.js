@@ -1,6 +1,7 @@
 // Order.js
 import React, { useState } from 'react';
 import './Orders.css';
+import  Header from './Header'
 import OrderDetailsModal from './OrderDetailsModal'; // Import the OrderDetailsModal component
 
 const Orders = () => {
@@ -28,29 +29,29 @@ const Orders = () => {
     setSelectedOrder(null);
   };
 
- return (
-  <div>
-    <h2>Orders</h2>
-    <div className="orders-container">
-      {orders.map((order) => (
-        <div className="order-card" key={order.id}>
-          <h3>Order #{order.id}</h3>
-          <p>Customer: {order.customer}</p>
-          <p>Address: {order.address}</p> {/* Display the address */}
-          <p>Total: ${order.total.toFixed(2)}</p>
-          <button
-            className="view-details-button"
-            onClick={() => handleViewDetails(order)}
-          >
-            View Details
-          </button>
-        </div>
-      ))}
-    </div>
-    {isModalOpen && selectedOrder && (
-      <OrderDetailsModal order={selectedOrder} onClose={handleCloseModal} />
-    )}
-  </div>
+ return (<><Header/>
+ <div>
+   <h2>Orders</h2>
+   <div className="orders-container">
+     {orders.map((order) => (
+       <div className="order-card" key={order.id}>
+         <h3>Order #{order.id}</h3>
+         <p>Customer: {order.customer}</p>
+         <p>Address: {order.address}</p> {/* Display the address */}
+         <p>Total: ${order.total.toFixed(2)}</p>
+         <button
+           className="view-details-button"
+           onClick={() => handleViewDetails(order)}
+         >
+           View Details
+         </button>
+       </div>
+     ))}
+   </div>
+   {isModalOpen && selectedOrder && (
+     <OrderDetailsModal order={selectedOrder} onClose={handleCloseModal} />
+   )}
+ </div></>
 );
     }
 

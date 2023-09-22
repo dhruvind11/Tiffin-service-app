@@ -115,8 +115,9 @@
 
 // export default SignUp;
 
+import Footer from "./Footer";
 
-
+import Navbar from "./Navbar";
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
