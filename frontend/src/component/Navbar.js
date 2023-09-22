@@ -14,7 +14,7 @@ function Navbar() {
 	const auth=localStorage.getItem('user');
 	const logout = () => {
 		localStorage.clear();
-		navigate("/signup");
+		navigate("/login");
 	  };
 	const navRef = useRef();
 	// const navigate = useNavigate();

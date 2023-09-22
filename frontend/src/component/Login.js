@@ -112,8 +112,12 @@ function Login() {
    );
    result=await result.json()
    console.log(result);
+   if(result.data.role==="seller"){
+    window.location.href='/seller'
+   }else{
+    navigate('/home');
+   }
    if(result.data){
-     navigate('/home');
      localStorage.setItem("user", JSON.stringify(result.token));
    }else{
     alert("please enter valid data")
@@ -145,7 +149,7 @@ function Login() {
               <form onSubmit={handleSubmit}>
               <div className="d-flex mb-2">
   <div className="form-check">
-  <input className="form-check-input" type="radio" name="role" id="radioCustomer" value={"customer"} onChange={(e)=>setRole(e.target.value)} defaultChecked />
+  <input className="form-check-input text-black" type="radio" name="role" id="radioCustomer" value={"customer"} onChange={(e)=>setRole(e.target.value)} defaultChecked />
   <label className="form-check-label " htmlFor="radioCustomer">
     customer
   </label>
