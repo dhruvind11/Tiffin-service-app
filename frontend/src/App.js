@@ -7,7 +7,7 @@ import ContactUs from "./component/ContactUs";
 import Navbar from "./component/Navbar";
 import Footer from "./component/Footer";
 import Base from "./component/Base";
-import BecomeToSeller from "./component/BecomeToSeller";
+import Seller from "./sellercomp/App";
 import MyOrder from "./component/MyOrder";
 
 import Login from "./component/Login";
@@ -26,7 +26,7 @@ function App() {
         <Route path="/contact" element={<ContactUs />} /> 
         <Route path="/myorder" element={<MyOrder />} />
         </Route>
-        <Route path="/seller" element={<BecomeToSeller />} />
+        <Route path="/seller" element={<Seller />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
