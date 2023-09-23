@@ -20,7 +20,7 @@ const MenuManagement = () => {
        <li key={index}>
          <strong>Name:</strong> {item.name} <br />
          <strong>Description:</strong> {item.description} <br />
-         <strong>Price:</strong> ${item.price.toFixed(2)}
+         <strong>Price:</strong> ${item.price}
        </li>
      ))}
    </ul>

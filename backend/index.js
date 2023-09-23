@@ -15,6 +15,7 @@ app.use(morgan('dev'))
 
 
 app.use("/api/v1/auth", require('./Route/authRoute'))
+app.use("/api/v1/menu", require('./Route/menuRoute'))
 
 
 const PORT = process.env.PORT || 8080;

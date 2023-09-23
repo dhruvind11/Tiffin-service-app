@@ -1,6 +1,6 @@
 // Dashboard.js
 import React from 'react';
-import './style.css';
+// import './style.css';
 import  Header  from './Header'
 import SellerDashboard from './SellerDashboard';
 const Dashboard = () => {

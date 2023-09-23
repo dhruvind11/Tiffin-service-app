@@ -87,7 +87,8 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css'
 import {Link} from 'react-router-dom'
-import { useNavigate } from 'react-router-dom';
+
+
 // Custom CSS for additional styling
 
 function Login() {
@@ -95,7 +96,7 @@ function Login() {
   const [password, setPassword] = useState('');
   
   const [role,setRole]=useState("customer");
-  const navigate=useNavigate();
+  
   
 
   const handleSubmit = async(e) => {
@@ -113,9 +114,9 @@ function Login() {
    result=await result.json()
    console.log(result);
    if(result.data.role==="seller"){
-    navigate('/dashboard');
+    window.location.href='/dashboard'
    }else{
-    navigate('/home');
+    window.location.href='/home'
    }
    if(result.data){
      localStorage.setItem("user", JSON.stringify(result.token));

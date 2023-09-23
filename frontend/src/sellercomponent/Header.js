@@ -1,21 +1,48 @@
 // Header.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+// import './Header.css'; // Import a CSS file for styling
+import { useNavigate } from 'react-router-dom';
 const Header = () => {
+
+   const navigate = useNavigate();
+	const auth=localStorage.getItem('user');
+	const logout = () => {
+		localStorage.clear();
+		navigate("/login");
+	  }; 
+	
   return (
-    <header>
-      <div className="logo">Your Logo</div>
-      <nav>
-        <ul>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/menu">Menu Management</Link></li>
-          <li><Link to="/orders">Orders</Link></li>
-          <li><Link to="/profile">Profile</Link></li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <Link class="navbar-brand" href="/">test</Link>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <Link class="nav-link active" aria-current="page" to="/dashboard">Dashboard</Link>
+        </li>
+        <li class="nav-item">
+          <Link class="nav-link active" to="/menu">MenuManagement</Link>
+        </li>
+        <li class="nav-item">
+          <Link class="nav-link active" to="/orders">Order</Link>
+        </li>
+        <li class="nav-item">
+          <Link class="nav-link active" to="/profile" tabindex="-1" aria-disabled="true">Profile</Link>
+
+        </li>
+        <li class="nav-item">
           
-        </ul>
-      </nav>
-    </header>
+        {auth?<Link to="/logout"onClick={logout} to="/login">Logout</Link>:<Link to="/login">Login</Link>}
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
   );
 };
 

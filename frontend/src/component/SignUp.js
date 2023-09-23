@@ -168,7 +168,7 @@ function SignUp() {
       backgroundSize: "cover"
     }}
     >
-      <div className="row justify-content-center mt-5" style={{"paddingTop":"8%"}}>
+      <div className="row justify-content-center  ">
         <div className="col-md-5">
           <div className="card">
             <div className="card-header text-center fs-4">Sign Up</div>
