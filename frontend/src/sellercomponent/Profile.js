@@ -1,25 +1,32 @@
-// Profile.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Profile.css'; // Import the CSS file
-import  Header from './Header'
+import Header from './Header';
+
 const Profile = () => {
   // Sample user profile data (replace with your data)
   const [userProfile, setUserProfile] = useState({
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'johndoe@example.com',
-    phone: '123-456-7890',
-    address: '123 Main St, City, Country',
+    sellerName: '', // Use camelCase for field names
+    email: '',
+    phoneNumber: '',
+    address: '',
   });
 
   const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    // Retrieve user profile data from localStorage when the component mounts
+    const storedUserProfile = localStorage.getItem('data');
+    if (storedUserProfile) {
+      setUserProfile(JSON.parse(storedUserProfile));
+    }
+  }, []);
 
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
   const handleSaveClick = () => {
-    // Save the updated user profile data to the server (implement backend integration)
+    localStorage.setItem('data', JSON.stringify(userProfile));
     setIsEditing(false);
   };
 
@@ -36,90 +43,81 @@ const Profile = () => {
     });
   };
 
-  return (<><Header/>
-  <div className="profile">
-    <h2>My Profile</h2>
-    <div className="profile-info">
-      <div className="profile-field">
-        <label>First Name:</label>
+  return (
+    <>
+      <Header />
+      <div className="profile">
+        <h2>My Profile</h2>
+        <div className="profile-info">
+          <div className="profile-field">
+            <label>SellerName:</label>
+            {isEditing ? (
+              <input
+                type="text"
+                name="sellerName" // Use camelCase for field names
+                value={userProfile.sellerName} // Use camelCase for field names
+                onChange={handleChange}
+              />
+            ) : (
+              <span>{userProfile.sellerName}</span>
+            )}
+          </div>
+          
+          <div className="profile-field">
+            <label>Email:</label>
+            {isEditing ? (
+              <input
+                type="email"
+                name="email"
+                value={userProfile.email}
+                onChange={handleChange}
+              />
+            ) : (
+              <span>{userProfile.email}</span>
+            )}
+          </div>
+          <div className="profile-field">
+            <label>Phone:</label>
+            {isEditing ? (
+              <input
+                type="text"
+                name="phoneNumber" // Use camelCase for field names
+                value={userProfile.phoneNumber} // Use camelCase for field names
+                onChange={handleChange}
+              />
+            ) : (
+              <span>{userProfile.phoneNumber}</span>
+            )}
+          </div>
+          <div className="profile-field">
+            <label>Address:</label>
+            {isEditing ? (
+              <textarea
+                name="address"
+                value={userProfile.address}
+                onChange={handleChange}
+              />
+            ) : (
+              <span>{userProfile.address}</span>
+            )}
+          </div>
+        </div>
         {isEditing ? (
-          <input
-            type="text"
-            name="firstName"
-            value={userProfile.firstName}
-            onChange={handleChange}
-          />
+          <div className="profile-actions">
+            <button className="save-button" onClick={handleSaveClick}>
+              Save
+            </button>
+            <button className="cancel-button" onClick={handleCancelClick}>
+              Cancel
+            </button>
+          </div>
         ) : (
-          <span>{userProfile.firstName}</span>
+          <button className="edit-button" onClick={handleEditClick}>
+            Edit Profile
+          </button>
         )}
       </div>
-      <div className="profile-field">
-        <label>Last Name:</label>
-        {isEditing ? (
-          <input
-            type="text"
-            name="lastName"
-            value={userProfile.lastName}
-            onChange={handleChange}
-          />
-        ) : (
-          <span>{userProfile.lastName}</span>
-        )}
-      </div>
-      <div className="profile-field">
-        <label>Email:</label>
-        {isEditing ? (
-          <input
-            type="email"
-            name="email"
-            value={userProfile.email}
-            onChange={handleChange}
-          />
-        ) : (
-          <span>{userProfile.email}</span>
-        )}
-      </div>
-      <div className="profile-field">
-        <label>Phone:</label>
-        {isEditing ? (
-          <input
-            type="tel"
-            name="phone"
-            value={userProfile.phone}
-            onChange={handleChange}
-          />
-        ) : (
-          <span>{userProfile.phone}</span>
-        )}
-      </div>
-      <div className="profile-field">
-        <label>Address:</label>
-        {isEditing ? (
-          <textarea
-            name="address"
-            value={userProfile.address}
-            onChange={handleChange}
-          />
-        ) : (
-          <span>{userProfile.address}</span>
-        )}
-      </div>
-    </div>
-    {isEditing ? (
-      <div className="profile-actions">
-        <button className="save-button" onClick={handleSaveClick}>
-          Save
-        </button>
-        <button className="cancel-button" onClick={handleCancelClick}>
-          Cancel
-        </button>
-      </div>
-    ) : (
-      <button className="edit-button" onClick={handleEditClick}>
-        Edit Profile
-      </button>
-    )}
-  </div></>
+    </>
   );
 };
 

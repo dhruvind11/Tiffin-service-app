@@ -37,7 +37,17 @@ const userSchema = new mongoose.Schema({
     confirmPassword: {
         type: String,
         required: [true, "confirmPassword is required"]
-    }
+    },
+    phoneNumber: {
+        type: String,
+        required: [true, "phoneNumber is required"],
+        unique: true,
+
+    },
+    address: {
+        type: String,
+        required: [true, "address is required"]
+    },
 });
 
 module.exports = mongoose.model("users", userSchema)

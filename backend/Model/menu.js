@@ -17,6 +17,11 @@ const menuSchema = new mongoose.Schema({
         type: String,
         required: [true, "image is required"],
     },
+    seller: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "users",
+        required: [true, "seller is require"],
+    }
 
 }, {
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }

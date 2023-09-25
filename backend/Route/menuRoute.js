@@ -1,6 +1,11 @@
 const express = require('express');
 const multer = require("multer");
-const menuController = require('../Controller/menuController');
+const {
+    addMenuController,
+    getMenuController,
+    deleteMenuController,
+    updateMenuController
+} = require('../Controller/menuController');
 const authMiddleware = require('../Middelware/authMiddleware');
 const router = express.Router();
 
@@ -14,6 +19,9 @@ const storage = multer.diskStorage({
     },
 });
 const upload = multer({ storage: storage });
-router.post("/add-menu-item", upload.single('image'), menuController)
+router.post("/add-menu-item", upload.single('image'), addMenuController)
+router.get("/get-menu-item", getMenuController);
+router.delete("/delete-menu-item/:id", deleteMenuController);
+router.put("/update-menu-item/:id", updateMenuController);
 
 module.exports = router

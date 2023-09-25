@@ -115,9 +115,7 @@
 
 // export default SignUp;
 
-import Footer from "./Footer";
 
-import Navbar from "./Navbar";
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
@@ -131,15 +129,17 @@ function SignUp() {
      const [email, setEmail] = useState("");
      const [password, setPassword] = useState("");
      const[confirmPassword,setConfirmPassword]=useState("");
+     const [phoneNumber, setPhoneNumber] = useState(""); // New phone number state
+      const [address, setAddress] = useState(""); 
      const navigate=useNavigate();
 
   const handleSubmit =async (e) => {
     e.preventDefault();
     try {
-      console.log(role,name,sellerName,email,password,confirmPassword)
+      console.log(role,name,sellerName,email,password,confirmPassword,phoneNumber,address)
    let result = await fetch("http://localhost:8080/api/v1/auth/register",{
     method:'post',
-    body:JSON.stringify({role,name,sellerName,email,password,confirmPassword}),
+    body:JSON.stringify({role,name,sellerName,email,password,confirmPassword,phoneNumber,address}),
     headers:{
       'content-Type':'application/json'
     },
@@ -261,6 +261,31 @@ function SignUp() {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                  
                     className="form-control"
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="phoneNumber">Phone Number:</label>
+                  <input
+                    type="number"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    className="form-control"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="address">Address:</label>
+                  <textarea
+                    id="address"
+                    name="address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    className="form-control"
+                    rows="2"
                     required
                   />
                 </div>

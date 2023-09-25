@@ -1,11 +1,14 @@
 import React from 'react'
 import { useDispatchCart, useCart } from './ContextReducer'
 import Card from 'react-bootstrap/Card';
+
+
 function Cards(props) {
+  
   return (
     <div>
       <Card style={{ width: '18rem' }}>
-      <Card.Img src={props.imgsrc}variant="top"  />
+      <Card.Img src={props.imgsrc}variant="top" className='img-fluid' />
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>

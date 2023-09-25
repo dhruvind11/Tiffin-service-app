@@ -33,6 +33,10 @@ const MenuForm = ({ addMenuItem }) => {
     formData.append("price", menuItem.price);
     formData.append("image", menuItem.image);
 
+    const sellerData = JSON.parse(localStorage.getItem("data"));
+const seller = sellerData ? sellerData._id : null;
+    formData.append("seller", seller);
+
     try {
       const response = await axios.post(
         "http://localhost:8080/api/v1/menu/add-menu-item",
@@ -43,10 +47,10 @@ const MenuForm = ({ addMenuItem }) => {
           },
         }
       );
-
+      alert("Menu item added successfully");
       if (response.status === 200) {
         console.log("Menu item added successfully");
-        alert("Menu item added successfully");
+        
        
       } else {
         console.log("Error:", response.data);
