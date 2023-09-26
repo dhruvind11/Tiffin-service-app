@@ -15,11 +15,11 @@ import Login from "./component/Login";
 import SignUp from "./component/SignUp";
 import PrivateComponent from "./component/PrivateComponent";
 import Profile from "./sellercomponent/Profile"
-<<<<<<< HEAD
+
 import MenuItemDetail from "./component/MenuItemDetails";
-=======
+
 import Header from "./sellercomponent/Header"
->>>>>>> 567ca95962c4dec945efa3746a3c4413ae43047b
+
 
 function App() {
   const data=JSON.parse(localStorage.getItem("data"));

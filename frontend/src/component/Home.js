@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React,{useState,useEffect} from "react";
 import Cards from "./Cards";
 import "./Home.css";
 import Footer from "./Footer";
@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import { FaSearch, FaLocationArrow } from "react-icons/fa";
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import MenuItemDetail from "./MenuItemDetails";
+
 
 function Home() {
   const [menuItems, setMenuItems] = useState([]);
@@ -25,26 +25,19 @@ function Home() {
 
   return (
     <>
-      <Navbar />
+    <Navbar/>
       <div class="wrap ">
-        <h1 className="mb-4"> Discover Tiffins in your Area: ) </h1>{" "}
+        <h1 className="mb-4"> Discover Tiffins in your Area:) </h1>{" "}
         <div className='search'>
-<<<<<<< HEAD
       <FaSearch className='search-icon' size='25px'/>
     <input type="description" placeholder='type to search..' />
     </div>
-=======
-          <FaSearch className='search-icon' size='25px' />
-          <input type="text" placeholder='type to search..' />
-        </div>
->>>>>>> 567ca95962c4dec945efa3746a3c4413ae43047b
       </div>
       <div className="container">
         <h1 h1 className="mb-5">
-
+         
           Today 's Pick
         </h1>
-<<<<<<< HEAD
         <div className="row gap-0  ">
         {menuItems.map(item => (
             <div className="col mb-5 mt-5 ms-5 " key={item._id}>
@@ -57,21 +50,10 @@ function Home() {
                   sellerName={item.sellerData.name}
                 />
               </Link>
-=======
-        <div className="row gap-0">
-          {menuItems.map(item => (
-            <div className="col mb-5 mt-5 ms-5" key={item._id}>
-              <Cards
-                imgsrc={`/images/${item.image}`}
-                title={item.name}
-                text={item.description}
-                text2={item.price}
-              />
->>>>>>> 567ca95962c4dec945efa3746a3c4413ae43047b
             </div>
           ))}
 
-
+          
         </div>
       </div>
       <div className="container">
