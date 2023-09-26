@@ -127,6 +127,7 @@ function Login() {
    }
     } catch (error) {
        console.log(error);
+       alert("please enter valid data")
     }
     
   };
@@ -137,7 +138,7 @@ function Login() {
     <div className="container-fluid pt-5"
     style={{
       backgroundImage:
-        "url('https://images.pexels.com/photos/349610/pexels-photo-349610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+        "url('https://img.freepik.com/free-vector/fruit-vegetables-background_23-2148497857.jpg?w=740&t=st=1695718195~exp=1695718795~hmac=ce28be1ae27a88287e3c0ffa1b6a25dc025f082fafc294e070cf911b56aac35f')",
         minHeight: '100vh',
       
       backgroundPosition: 'center',

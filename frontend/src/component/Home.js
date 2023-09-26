@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Cards from "./Cards";
 import "./Home.css";
 import Footer from "./Footer";
@@ -23,21 +23,21 @@ function Home() {
 
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <div class="wrap ">
         <h1 className="mb-4"> Discover Tiffins in your Area: ) </h1>{" "}
         <div className='search'>
-      <FaSearch className='search-icon' size='25px'/>
-    <input type="text" placeholder='type to search..' />
-    </div>
+          <FaSearch className='search-icon' size='25px' />
+          <input type="text" placeholder='type to search..' />
+        </div>
       </div>
       <div className="container">
         <h1 h1 className="mb-5">
-         
+
           Today 's Pick
         </h1>
         <div className="row gap-0">
-        {menuItems.map(item => (
+          {menuItems.map(item => (
             <div className="col mb-5 mt-5 ms-5" key={item._id}>
               <Cards
                 imgsrc={`/images/${item.image}`}
@@ -48,7 +48,7 @@ function Home() {
             </div>
           ))}
 
-          
+
         </div>
       </div>
       <div className="container">

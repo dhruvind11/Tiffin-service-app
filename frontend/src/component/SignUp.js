@@ -119,7 +119,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import './Signup.css'; // Custom CSS for additional styling
+// import './Signup.css'; // Custom CSS for additional styling
 import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
