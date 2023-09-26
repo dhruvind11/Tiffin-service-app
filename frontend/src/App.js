@@ -13,7 +13,7 @@ import Login from "./component/Login";
 import SignUp from "./component/SignUp";
 import PrivateComponent from "./component/PrivateComponent";
 import Profile from "./sellercomponent/Profile"
-
+import MenuItemDetail from "./component/MenuItemDetails";
 
 function App() {
   const data=JSON.parse(localStorage.getItem("data"));
@@ -29,11 +29,12 @@ function App() {
       <Route element={<PrivateComponent/>}>
          
         <Route path="/home" element={<Home />} />
+        <Route path="/menu/:itemId" element={<MenuItemDetail/>} />
         <Route path="/about" element={<About />} />{" "}
         <Route path="/contact" element={<ContactUs />} /> 
         <Route path="/myorder" element={<MyOrder />} />
        
-        </Route>
+</Route>
       </> }
       {   data && data.role==='seller' &&   <>
        <Route path="/dashboard" element={<Dashboard />} />

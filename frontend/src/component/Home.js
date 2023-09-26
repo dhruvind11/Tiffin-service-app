@@ -5,6 +5,8 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import { FaSearch, FaLocationArrow } from "react-icons/fa";
 import axios from 'axios'
+import {Link} from 'react-router-dom'
+import MenuItemDetail from "./MenuItemDetails";
 
 function Home() {
   const [menuItems, setMenuItems] = useState([]);
@@ -28,7 +30,7 @@ function Home() {
         <h1 className="mb-4"> Discover Tiffins in your Area: ) </h1>{" "}
         <div className='search'>
       <FaSearch className='search-icon' size='25px'/>
-    <input type="text" placeholder='type to search..' />
+    <input type="description" placeholder='type to search..' />
     </div>
       </div>
       <div className="container">
@@ -36,15 +38,18 @@ function Home() {
          
           Today 's Pick
         </h1>
-        <div className="row gap-0">
+        <div className="row gap-0  ">
         {menuItems.map(item => (
-            <div className="col mb-5 mt-5 ms-5" key={item._id}>
-              <Cards
-                imgsrc={`/images/${item.image}`}
-                title={item.name}
-                text={item.description}
-                text2={item.price}
-              />
+            <div className="col mb-5 mt-5 ms-5 " key={item._id}>
+              <Link to={`/menu/${item._id}`} className="card-link">
+                <Cards
+                  imgsrc={`/images/${item.image}`}
+                  title={item.name}
+                  description={item.description}
+                  price={item.price}
+                  sellerName={item.sellerData.name}
+                />
+              </Link>
             </div>
           ))}
 
@@ -58,32 +63,32 @@ function Home() {
             <Cards
               imgsrc="https://content.jdmagicbox.com/comp/ahmedabad/b4/079pxx79.xx79.200115093511.i8b4/catalogue/mohanjithal-gujarati-thali-chandkheda-ahmedabad-4mq1j4g0al.jpg?clr="
               title="Gujarati Thali"
-              text="5 roti+sabji+papad+daal+rice"
-              text2="60"
+              description="5 roti+sabji+papad+daal+rice"
+              price="60"
             />
           </div>
           <div className="col mb-5 mt-5 ms-5">
             <Cards
               imgsrc="https://content.jdmagicbox.com/comp/ahmedabad/b4/079pxx79.xx79.200115093511.i8b4/catalogue/mohanjithal-gujarati-thali-chandkheda-ahmedabad-4mq1j4g0al.jpg?clr="
               title="punjabi thali"
-              text="5 roti+sabji+papad+daal+rice"
-              text2="60"
+              description="5 roti+sabji+papad+daal+rice"
+              price="60"
             />
           </div>
           <div className="col mb-5 mt-5 ms-5">
             <Cards
               imgsrc="https://content.jdmagicbox.com/comp/ahmedabad/b4/079pxx79.xx79.200115093511.i8b4/catalogue/mohanjithal-gujarati-thali-chandkheda-ahmedabad-4mq1j4g0al.jpg?clr="
               title="Kathiyawadi thali  "
-              text="5 roti+sabji+papad+daal+rice"
-              text2="60"
+              description="5 roti+sabji+papad+daal+rice"
+              price="60"
             />
           </div>
           <div className="col mb-5 mt-5 ms-5">
             <Cards
               imgsrc="https://hungrito.com/wp-content/uploads/2021/07/Rajasthani-food.jpg"
               title="Rajathani Thali  "
-              text="5 roti+sabji+papad+daal+rice"
-              text2="60"
+              description="5 roti+sabji+papad+daal+rice"
+              price="60"
             />
           </div>
         </div>
@@ -95,32 +100,32 @@ function Home() {
             <Cards
               imgsrc="https://content.jdmagicbox.com/comp/ahmedabad/b4/079pxx79.xx79.200115093511.i8b4/catalogue/mohanjithal-gujarati-thali-chandkheda-ahmedabad-4mq1j4g0al.jpg?clr="
               title="Gujarati Thali"
-              text="5 roti+sabji+papad+daal+rice"
-              text2="60"
+              description="5 roti+sabji+papad+daal+rice"
+              price="60"
             />
           </div>
           <div className="col mb-5 mt-5 ms-5">
             <Cards
               imgsrc="https://content.jdmagicbox.com/comp/ahmedabad/b4/079pxx79.xx79.200115093511.i8b4/catalogue/mohanjithal-gujarati-thali-chandkheda-ahmedabad-4mq1j4g0al.jpg?clr="
               title="punjabi thali"
-              text="5 roti+sabji+papad+daal+rice"
-              text2="60"
+              description="5 roti+sabji+papad+daal+rice"
+              price="60"
             />
           </div>
           <div className="col mb-5 mt-5 ms-5">
             <Cards
               imgsrc="https://content.jdmagicbox.com/comp/ahmedabad/b4/079pxx79.xx79.200115093511.i8b4/catalogue/mohanjithal-gujarati-thali-chandkheda-ahmedabad-4mq1j4g0al.jpg?clr="
               title="Kathiyawadi thali  "
-              text="5 roti+sabji+papad+daal+rice"
-              text2="60"
+              description="5 roti+sabji+papad+daal+rice"
+              price="60"
             />
           </div>
           <div className="col mb-5 mt-5 ms-5">
             <Cards
               imgsrc="https://hungrito.com/wp-content/uploads/2021/07/Rajasthani-food.jpg"
               title="Rajathani Thali  "
-              text="5 roti+sabji+papad+daal+rice"
-              text2="60"
+              description="5 roti+sabji+papad+daal+rice"
+              price="60"
             />
           </div>
         </div>

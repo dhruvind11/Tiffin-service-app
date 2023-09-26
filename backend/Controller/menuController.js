@@ -35,12 +35,43 @@ const addMenuController = async(req, res) => {
 
 const getMenuController = async(req, res) => {
     try {
-        const menuItems = await menu.find(); // Retrieve all menu items from your database
-        res.status(200).json(menuItems);
+        const menuItems = await menu.aggregate([{
+                $lookup: {
+                    from: 'users',
+                    localField: 'seller',
+                    foreignField: '_id',
+                    as: 'sellerData'
+                }
+            },
+            {
+                $unwind: '$sellerData'
+            },
+
+        ]);
+
+        res.status(200).send(menuItems);
     } catch (error) {
         res.status(500).send({
             success: false,
-            message: "Error in get menu api",
+            message: "Error in get menu API",
+            error
+        });
+    }
+}
+
+const getByIdMenuController = async(req, res) => {
+    try {
+        const menuItem = await menu.findById(req.params.id);
+
+        if (!menuItem) {
+            return res.status(404).json({ message: "Menu item not found" });
+        }
+
+        res.status(200).send(menuItem);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error in gett menu api",
             error
         });
     }
@@ -76,4 +107,4 @@ const updateMenuController = async(req, res) => {
     }
 }
 
-module.exports = { addMenuController, getMenuController, deleteMenuController, updateMenuController };
+module.exports = { addMenuController, getMenuController, deleteMenuController, updateMenuController, getByIdMenuController };

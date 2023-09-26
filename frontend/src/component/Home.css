@@ -45,3 +45,8 @@ padding-left: 3px;
 .search input:focus {
     outline: none;
 }
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
