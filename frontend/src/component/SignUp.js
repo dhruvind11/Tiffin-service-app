@@ -119,7 +119,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import '../App.css'; // Custom CSS for additional styling
+import './Signup.css'; // Custom CSS for additional styling
 import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
@@ -162,14 +162,14 @@ function SignUp() {
     <div className="container-fluid"
     style={{
       backgroundImage:
-        "url('https://images.pexels.com/photos/349610/pexels-photo-349610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+        "url('https://img.freepik.com/free-vector/fruit-vegetables-background_23-2148497857.jpg?w=740&t=st=1695718195~exp=1695718795~hmac=ce28be1ae27a88287e3c0ffa1b6a25dc025f082fafc294e070cf911b56aac35f')",
         minHeight: '100vh',
       backgroundPosition: 'center',
       backgroundSize: "cover"
     }}
     >
-      <div className="row justify-content-center  ">
-        <div className="col-md-5">
+      <div className="scona row justify-content-center">
+        <div className="col-md-5 signform">
           <div className="card">
             <div className="card-header text-center fs-4">Sign Up</div>
             <div className="card-body">

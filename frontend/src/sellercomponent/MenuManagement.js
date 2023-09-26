@@ -14,7 +14,7 @@ const MenuManagement = () => {
   return (
    <> <Header/><div     style={{
     backgroundImage:
-      "url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80')",
+      "url('https://img.freepik.com/free-vector/fruit-vegetables-background_23-2148497857.jpg?w=740&t=st=1695718195~exp=1695718795~hmac=ce28be1ae27a88287e3c0ffa1b6a25dc025f082fafc294e070cf911b56aac35f')",
       minHeight: '100vh',
     backgroundPosition: 'center',
     backgroundSize: "cover"

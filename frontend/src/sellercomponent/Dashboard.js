@@ -1,16 +1,16 @@
 // Dashboard.js
 import React from 'react';
-// import './style.css';
+import './dashboard.css'
 import  Header  from './Header'
 import SellerDashboard from './SellerDashboard';
 const Dashboard = () => {
   return (
     <><Header/>
-    <section className="dashboard">
+    <div className="dashboard">
      
       <SellerDashboard/>
       {/* Dashboard content goes here */}
-    </section></>
+    </div></>
   );
 };
 
