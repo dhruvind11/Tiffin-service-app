@@ -27,9 +27,10 @@ padding-left: 3px;
 .search {
     display: flex;
     align-items: center;
-    background-color: rgb(233, 233, 233);
+    background-color: transparent;
     border-radius: 10px;
     padding: 12px;
+    border: rgba(255, 255, 255, 0.53) 1px solid;
     margin: auto;
     width: 60%
 }
@@ -45,8 +46,18 @@ padding-left: 3px;
 .search input:focus {
     outline: none;
 }
+<<<<<<< HEAD
 
 .card-link {
     text-decoration: none;
     color: inherit;
+=======
+.wrap{
+height: 50vh;
+margin: 0px; 
+padding-top: 18%;
+padding-bottom: 18%;
+color: white;
+   background-image: url('https://images.unsplash.com/photo-1552166539-7f3691985d0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80');
+>>>>>>> 567ca95962c4dec945efa3746a3c4413ae43047b
 }

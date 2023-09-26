@@ -1,15 +1,21 @@
 /* MenuForm.css */
+
+
+
 .menu-form {
-    background-color: #f7f7f7;
+  background-color: transparent ;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
-    margin: 0 auto;
+    margin: auto;
+    padding-top: 100px;
+    
   }
   
   .form-group {
+    
     margin-bottom: 20px;
+    opacity: ;
   }
   
   label {
@@ -67,10 +73,13 @@
   }
   
   /* Responsive Styles */
-  @media (max-width: 768px) {
+  @media (max-width: 550px) {
     .menu-form {
+
       max-width: 100%;
       padding: 10px;
+      padding-top: 110px;
+      
     }
   
     label {

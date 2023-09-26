@@ -1,9 +1,11 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes,Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import EditMenu from "./sellercomponent/EditMenu"
 import Home from "./component/Home";
 import About from "./component/About";
 import ContactUs from "./component/ContactUs";
-
+import MenuPage from "./sellercomponent/MenuPage";
 import Base from "./component/Base";
 import Orders from "./sellercomponent/Orders"
 import MyOrder from "./component/MyOrder";
@@ -13,11 +15,15 @@ import Login from "./component/Login";
 import SignUp from "./component/SignUp";
 import PrivateComponent from "./component/PrivateComponent";
 import Profile from "./sellercomponent/Profile"
+<<<<<<< HEAD
 import MenuItemDetail from "./component/MenuItemDetails";
+=======
+import Header from "./sellercomponent/Header"
+>>>>>>> 567ca95962c4dec945efa3746a3c4413ae43047b
 
 function App() {
   const data=JSON.parse(localStorage.getItem("data"));
-  
+ 
   return (
     <BrowserRouter>
     <Routes>
@@ -38,7 +44,9 @@ function App() {
       </> }
       {   data && data.role==='seller' &&   <>
        <Route path="/dashboard" element={<Dashboard />} />
-           <Route path="/menu" element={<MenuManagement />} />
+           <Route path="/menu" element={<MenuPage />} />
+           <Route path="menu/addmenu" element={<MenuManagement />} />
+           <Route path="menu/editmenu" element={<EditMenu />} />
            <Route path="/orders" element={<Orders />} />
            <Route path="/profile" element={<Profile />} />
 </>}

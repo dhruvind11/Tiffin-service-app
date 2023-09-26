@@ -77,8 +77,12 @@ const seller = sellerData ? sellerData._id : null;
 
   return (
     <>
+    
       <div className="menu-form">
         <div className="form-group">
+        <h2     style={{
+     textAlign: 'center'
+    }}> Add New Menu</h2>
           <label htmlFor="name">Name:</label>
           <input
             type="text"
