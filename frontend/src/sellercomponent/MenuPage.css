@@ -1,0 +1,42 @@
+.container{
+    display: flex;
+    
+    flex-direction: column;
+    
+    margin-top: 10vh;
+
+}
+.hm{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    justify-content: center;
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 0px;
+}
+.mbtn{
+    background-color: rgb(115, 180, 45);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid black ;
+    border-radius: 5px;
+    margin: 2% 20%;
+    color: black;
+    text-decoration: none;
+}
+
+.mbtn:hover{
+    background-color: antiquewhite;
+    border: 2px solid black ;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.linkm{
+    text-decoration: none;
+}
+.maincm{
+    background-image: url('https://img.freepik.com/free-photo/fresh-colourful-ingredients-mexican-cuisine_23-2148254294.jpg?w=1060&t=st=1688505328~exp=1688505928~hmac=69bc50c347cab8e4f347b245ea3710338390a16c350645cfce314849790c09d2');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}

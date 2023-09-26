@@ -6,9 +6,9 @@ import  Header  from './Header'
 const SellerDashboard = () => {
   // Sample order summary data (replace with your data)
   const orderSummary = {
-    totalOrders: 50,
-    pendingOrders: 10,
-    completedOrders: 40,
+    totalOrders: 5000,
+    pendingOrders: 100000,
+    completedOrders: 400000000,
   };
 
   return (<>
