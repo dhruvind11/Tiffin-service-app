@@ -1,52 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import './Profile.css'; // Import the CSS file
-import Header from './Header';
 
-const Profile = () => {
-  // Sample user profile data (replace with your data)
-  const [userProfile, setUserProfile] = useState({
-    sellerName: '', // Use camelCase for field names
-    email: '',
-    phoneNumber: '',
-    address: '',
-  });
-
-  const [isEditing, setIsEditing] = useState(false);
-
-  useEffect(() => {
-    // Retrieve user profile data from localStorage when the component mounts
-    const storedUserProfile = localStorage.getItem('data');
-    if (storedUserProfile) {
-      setUserProfile(JSON.parse(storedUserProfile));
-    }
-  }, []);
-
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
-
-  const handleSaveClick = () => {
-    localStorage.setItem('data', JSON.stringify(userProfile));
-    setIsEditing(false);
-  };
-
-  const handleCancelClick = () => {
-    // Revert any changes made during editing
-    setIsEditing(false);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserProfile({
-      ...userProfile,
-      [name]: value,
-    });
-  };
-
-  return (
-    <>
-      <Header />
-      <div className='maincom'><div className="profile">
+import Navbar from './Navbar'
+import Footer from './Footer'
+import './MyProfile.css'
+const MyProfile = () => {
+    // Sample user profile data (replace with your data)
+    const [userProfile, setUserProfile] = useState({
+        name: '', // Use camelCase for field names
+        email: '',
+        phoneNumber: '',
+        address: '',
+      });
+    
+      const [isEditing, setIsEditing] = useState(false);
+    
+      useEffect(() => {
+        // Retrieve user profile data from localStorage when the component mounts
+        const storedUserProfile = localStorage.getItem('data');
+        if (storedUserProfile) {
+          setUserProfile(JSON.parse(storedUserProfile));
+        }
+      }, []);
+    
+      const handleEditClick = () => {
+        setIsEditing(true);
+      };
+    
+      const handleSaveClick = () => {
+        localStorage.setItem('data', JSON.stringify(userProfile));
+        setIsEditing(false);
+      };
+    
+      const handleCancelClick = () => {
+        // Revert any changes made during editing
+        setIsEditing(false);
+      };
+    
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUserProfile({
+          ...userProfile,
+          [name]: value,
+        });
+      };
+    
+      return (
+        <>
+        <Navbar/>
+          <div className='maincomp'><div className="profile">
             <h2>My Profile</h2>
             <div className="profile-info">
               <div className="profile-field">
@@ -55,11 +56,11 @@ const Profile = () => {
                   <input
                     type="text"
                     name="sellerName" // Use camelCase for field names
-                    value={userProfile.sellerName} // Use camelCase for field names
+                    value={userProfile.name} // Use camelCase for field names
                     onChange={handleChange}
                   />
                 ) : (
-                  <span>{userProfile.sellerName}</span>
+                  <span>{userProfile.name}</span>
                 )}
               </div>
               
@@ -115,11 +116,11 @@ const Profile = () => {
               <button className="edit-button" onClick={handleEditClick}>
                 Edit Profile
               </button>
-              
             )}
           </div></div>
-    </>
-  );
-};
+          <Footer/>
+        </>
+      );
+    };
 
-export default Profile;
+export default MyProfile

@@ -1,10 +1,14 @@
 /* Contact Container */
-
+.main-cont{
+    background-image:url('https://img.freepik.com/free-vector/fruit-vegetables-background_23-2148497857.jpg?w=740&t=st=1695718195~exp=1695718795~hmac=ce28be1ae27a88287e3c0ffa1b6a25dc025f082fafc294e070cf911b56aac35f') ;
+    background-repeat: no-repeat;
+     background-size: cover;padding: 20px;
+}
 .contact-container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #df2b2b;
+    background-color: #fefefecd;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
