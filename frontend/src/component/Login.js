@@ -37,8 +37,6 @@ function Login() {
      localStorage.setItem("user", JSON.stringify(result.token));
      localStorage.setItem("data", JSON.stringify(result.data));
 
-   }else{
-    alert("please enter valid data")
    }
     } catch (error) {
        console.log(error);
@@ -55,35 +53,34 @@ function Login() {
       backgroundImage:
         "url('https://img.freepik.com/free-vector/fruit-vegetables-background_23-2148497857.jpg?w=740&t=st=1695718195~exp=1695718795~hmac=ce28be1ae27a88287e3c0ffa1b6a25dc025f082fafc294e070cf911b56aac35f')",
         minHeight: '100vh',
-      
       backgroundPosition: 'center',
       backgroundSize: "cover"
     }}
     >
       <div className="row justify-content-center " style={{"paddingTop":"10%"}}>
         <div className="col-md-4">
-          <div className="card">
+          <div className="card bg-dark text-white">
             <div className="card-header text-center fs-3">Login</div>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
               <div className="d-flex mb-2">
   <div className="form-check">
   <input className="form-check-input text-black" type="radio" name="role" id="radioCustomer" value={"customer"} onChange={(e)=>setRole(e.target.value)} defaultChecked />
-  <label className="form-check-label " htmlFor="radioCustomer">
+  <label className="form-check-label text-white" htmlFor="radioCustomer">
     customer
   </label>
 </div>
 
 <div className="form-check ms-2">
   <input className="form-check-input" type="radio" name="role" id="radioSeller" value={"seller"} onChange={(e)=>setRole(e.target.value)} />
-  <label className="form-check-label" htmlFor="radioSeller">
+  <label className="form-check-label text-white" htmlFor="radioSeller">
     seller
   </label>
 </div>
 </div>
 
-                <div className="form-group">
-                  <label htmlFor="username">Email:</label>
+                <div className="form-group ">
+                  <label htmlFor="username" className='text-white'>Email:</label>
                   <input
                     type="text"
                     id="email"
@@ -97,7 +94,7 @@ function Login() {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="password">Password:</label>
+                  <label htmlFor="password" className='text-white'>Password:</label>
                   <input
                     type="password"
                     id="password"

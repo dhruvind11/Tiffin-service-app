@@ -10,6 +10,7 @@ import {Link} from 'react-router-dom'
 
 function Home() {
   const [menuItems, setMenuItems] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     // Make a GET request to fetch menu items when the component mounts
@@ -23,6 +24,10 @@ function Home() {
       });
   }, []);
 
+  const filteredMenuItems = menuItems.filter(item =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <>
     <Navbar/>
@@ -30,7 +35,11 @@ function Home() {
         <h1 className="mb-4"> Discover Tiffins in your Area:) </h1>{" "}
         <div className='search'>
       <FaSearch className='search-icon' size='25px'/>
-    <input type="description" placeholder='type to search..' />
+    <input
+            type="text"
+            placeholder='Type to search..'
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}/>
     </div>
       </div>
       <div className="container">
@@ -39,7 +48,7 @@ function Home() {
           Today 's Pick
         </h1>
         <div className="row gap-0  ">
-        {menuItems.map(item => (
+        {filteredMenuItems.map(item => (
             <div className="col mb-5 mt-5 ms-5 " key={item._id}>
               <Link to={`/menu/${item._id}`} className="card-link">
                 <Cards
@@ -59,75 +68,37 @@ function Home() {
       <div className="container">
         <h1 className="mb-5 mt-5"> Popular in Your Area </h1>
         <div className="row ">
-          <div className="col mb-5 mt-5 ms-5">
-            <Cards
-              imgsrc="https://content.jdmagicbox.com/comp/ahmedabad/b4/079pxx79.xx79.200115093511.i8b4/catalogue/mohanjithal-gujarati-thali-chandkheda-ahmedabad-4mq1j4g0al.jpg?clr="
-              title="Gujarati Thali"
-              description="5 roti+sabji+papad+daal+rice"
-              price="60"
-            />
-          </div>
-          <div className="col mb-5 mt-5 ms-5">
-            <Cards
-              imgsrc="https://content.jdmagicbox.com/comp/ahmedabad/b4/079pxx79.xx79.200115093511.i8b4/catalogue/mohanjithal-gujarati-thali-chandkheda-ahmedabad-4mq1j4g0al.jpg?clr="
-              title="punjabi thali"
-              description="5 roti+sabji+papad+daal+rice"
-              price="60"
-            />
-          </div>
-          <div className="col mb-5 mt-5 ms-5">
-            <Cards
-              imgsrc="https://content.jdmagicbox.com/comp/ahmedabad/b4/079pxx79.xx79.200115093511.i8b4/catalogue/mohanjithal-gujarati-thali-chandkheda-ahmedabad-4mq1j4g0al.jpg?clr="
-              title="Kathiyawadi thali  "
-              description="5 roti+sabji+papad+daal+rice"
-              price="60"
-            />
-          </div>
-          <div className="col mb-5 mt-5 ms-5">
-            <Cards
-              imgsrc="https://hungrito.com/wp-content/uploads/2021/07/Rajasthani-food.jpg"
-              title="Rajathani Thali  "
-              description="5 roti+sabji+papad+daal+rice"
-              price="60"
-            />
-          </div>
+        {filteredMenuItems.map(item => (
+            <div className="col mb-5 mt-5 ms-5 " key={item._id}>
+              <Link to={`/menu/${item._id}`} className="card-link">
+                <Cards
+                  imgsrc={`/images/${item.image}`}
+                  title={item.name}
+                  description={item.description}
+                  price={item.price}
+                  sellerName={item.sellerData.name}
+                />
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
       <div className="container">
         <h1 className="mb-5 mt-5"> Try Something New </h1>
         <div className="row ">
-          <div className="col mb-5 mt-5 ms-5">
-            <Cards
-              imgsrc="https://content.jdmagicbox.com/comp/ahmedabad/b4/079pxx79.xx79.200115093511.i8b4/catalogue/mohanjithal-gujarati-thali-chandkheda-ahmedabad-4mq1j4g0al.jpg?clr="
-              title="Gujarati Thali"
-              description="5 roti+sabji+papad+daal+rice"
-              price="60"
-            />
-          </div>
-          <div className="col mb-5 mt-5 ms-5">
-            <Cards
-              imgsrc="https://content.jdmagicbox.com/comp/ahmedabad/b4/079pxx79.xx79.200115093511.i8b4/catalogue/mohanjithal-gujarati-thali-chandkheda-ahmedabad-4mq1j4g0al.jpg?clr="
-              title="punjabi thali"
-              description="5 roti+sabji+papad+daal+rice"
-              price="60"
-            />
-          </div>
-          <div className="col mb-5 mt-5 ms-5">
-            <Cards
-              imgsrc="https://content.jdmagicbox.com/comp/ahmedabad/b4/079pxx79.xx79.200115093511.i8b4/catalogue/mohanjithal-gujarati-thali-chandkheda-ahmedabad-4mq1j4g0al.jpg?clr="
-              title="Kathiyawadi thali  "
-              description="5 roti+sabji+papad+daal+rice"
-              price="60"
-            />
-          </div>
-          <div className="col mb-5 mt-5 ms-5">
-            <Cards
-              imgsrc="https://hungrito.com/wp-content/uploads/2021/07/Rajasthani-food.jpg"
-              title="Rajathani Thali  "
-              description="5 roti+sabji+papad+daal+rice"
-              price="60"
-            />
-          </div>
+        {filteredMenuItems.map(item => (
+            <div className="col mb-5 mt-5 ms-5 " key={item._id}>
+              <Link to={`/menu/${item._id}`} className="card-link">
+                <Cards
+                  imgsrc={`/images/${item.image}`}
+                  title={item.name}
+                  description={item.description}
+                  price={item.price}
+                  sellerName={item.sellerData.name}
+                />
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </>

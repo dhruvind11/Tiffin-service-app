@@ -96,8 +96,7 @@ const deleteMenuController = async(req, res) => {
 
 const updateMenuController = async(req, res) => {
     try {
-        const menuItem = await menu.findOneAndUpdate({ _id: req.params.id }, { $set: req.body }, { new: true } // To return the updated document
-        );
+        const menuItem = await menu.findOneAndUpdate({ _id: req.params.id }, { $set: req.body }, { new: true });
         if (!menuItem) {
             return res.status(404).json({ error: 'Menu Item not found' });
         }
