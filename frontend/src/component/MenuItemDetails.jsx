@@ -7,7 +7,16 @@ const MenuItemDetail = () => {
   const { itemId } = useParams();
   const [menuItem, setMenuItem] = useState({}); 
   const [quantity, setQuantity] = useState(1);
+  const [formState, setFormState] = useState({
+    mealPlan: 'Trial',
+    deliveryTime: '',
+    cookingInstruction: '',
+  });
 
+  const handleDeliveryTimeChange = (e) => {
+    const selectedDeliveryTime = e.target.value;
+    setFormState({ ...formState, deliveryTime: selectedDeliveryTime });
+  };
 
   const handleIncrement = () => {
     setQuantity(quantity + 1);
@@ -20,11 +29,52 @@ const MenuItemDetail = () => {
     }
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormState({ ...formState, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  
+    const formData = {
+      quantity: quantity,
+      menuItemId: itemId,
+      customer: JSON.parse(localStorage.getItem('data'))._id,
+      seller: menuItem.seller,
+      ...formState,
+    };
+  
+    console.log(formData);
+  
+    axios.post('http://localhost:8080/api/v1/order/add-order', formData)
+      .then(response => {
+        console.log('Order placed successfully:', response.data);
+        alert("Order placed successfully");
+      })
+      .catch(error => {
+        if (error.response) {
+          
+          console.error('Server Error:', error.response.data);
+          console.error('Status Code:', error.response.status);
+          console.error('Headers:', error.response.headers);
+        } else if (error.request) {
+         
+          console.error('No response received:', error.request);
+        } else {
+          
+          console.error('Error setting up the request:', error.message);
+        }
+        console.error('Error placing order:', error.config);
+      });
+  };
+  
+
   useEffect(() => {
     
     axios.get(`http://localhost:8080/api/v1/menu/getById/${itemId}`).then(response => {
         setMenuItem(response.data);
-        console.log(response.data);
+        console.log(response.data.seller);
       })
       .catch(error => {
         console.error('Error fetching menu item:', error);
@@ -46,20 +96,27 @@ const MenuItemDetail = () => {
             <p>Extra items should only be ordered along with a meal plan and from the same seller onlyExtra items should only be ordered along with a meal plan and from the same seller only   </p>
             <p>Refund Policy: A cancellation fee of $5 on a trial order and $10 on all other orders is applicable.</p>
             </div>
-            <div className="col-6">
-                <form action="">
+
+
+            <div className="col-6" >
+                <form action="" onSubmit={handleSubmit}>
 
                 <p className="fs-2 fw-bold">{menuItem.name}</p>
           <p className="fs-5">{menuItem.description}</p>
           <p className="text-danger fs-2">&#8377;{menuItem.price}</p>
           <div className="form-group">
         <label htmlFor="meal">Meal Plan</label>
-       <select className="form-select" aria-label="Default select example">
-  <option selected>Trial</option>
-  <option value={1}>Weekly</option>
-  <option value={2}>Monthly</option>
-  
-</select>
+       <select
+            className="form-select"
+            aria-label="Default select example"
+            name="mealPlan"
+            value={formState.mealPlan}
+            onChange={handleInputChange}
+          >
+            <option value="Trial">Trial</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Monthly">Monthly</option>
+          </select>
 
       </div>
       
@@ -68,7 +125,14 @@ const MenuItemDetail = () => {
       <div className="row">
         <div className="col-md-4 mb-3">
        <div className="form-check">
-  <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+       <input
+                  className="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                  value="10 AM to 12 PM"
+                  onChange={handleDeliveryTimeChange}
+                />
   <label className="form-check-label" htmlFor="flexRadioDefault1">
   10 AM to 12 AM
   </label>
@@ -78,7 +142,14 @@ const MenuItemDetail = () => {
         </div>
         <div className="col-md-4 mb-3">
         <div className="form-check">
-  <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+        <input
+                  className="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                  value="12 PM to 2 PM"
+                  onChange={handleDeliveryTimeChange}
+                />
   <label className="form-check-label" htmlFor="flexRadioDefault1">
   12 PM to 2 PM
   </label>
@@ -86,7 +157,14 @@ const MenuItemDetail = () => {
         </div>
         <div className="col-md-4 mb-3">
         <div className="form-check">
-  <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+        <input
+                  className="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                  value=" 6 PM to 7 PM"
+                  onChange={handleDeliveryTimeChange}
+                />
   <label className="form-check-label" htmlFor="flexRadioDefault1">
   6 PM to 7 PM
   </label>
@@ -96,7 +174,14 @@ const MenuItemDetail = () => {
       <div className="row">
         <div className="col-md-4 mb-3">
         <div className="form-check">
-  <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+        <input
+                  className="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                  value=" 7 PM to 8 PM"
+                  onChange={handleDeliveryTimeChange}
+                />
   <label className="form-check-label" htmlFor="flexRadioDefault1">
   7 PM to 8 PM
   </label>
@@ -104,7 +189,14 @@ const MenuItemDetail = () => {
         </div>
         <div className="col-md-4 mb-3">
         <div className="form-check">
-  <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+        <input
+                  className="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                  value=" 8 PM to 9 PM"
+                  onChange={handleDeliveryTimeChange}
+                />
   <label className="form-check-label" htmlFor="flexRadioDefault1">
   8 PM to 9 PM
   </label>
@@ -112,7 +204,14 @@ const MenuItemDetail = () => {
         </div>
         <div className="col-md-4 mb-3">
         <div className="form-check">
-  <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+        <input
+                  className="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                  value=" 9 PM to 10 PM"
+                  onChange={handleDeliveryTimeChange}
+                /> 
   <label className="form-check-label" htmlFor="flexRadioDefault1">
   9 PM to 10 PM
   </label>
@@ -155,16 +254,19 @@ const MenuItemDetail = () => {
       <div className="mb-3">
             <label htmlFor="cookingInstruction" className="fs-4 fw-bold">Cooking Instructions</label>
             <input
-              className="form-control"
-              type="text"
-              id="cookingInstruction"
-              placeholder="Add cooking instruction"
-              aria-label="Cooking Instruction"
-            />
+            className="form-control"
+            type="text"
+            id="cookingInstruction"
+            name="cookingInstruction"
+            value={formState.cookingInstruction}
+            onChange={handleInputChange}
+            placeholder="Add cooking instruction"
+            aria-label="Cooking Instruction"
+          />
           </div>
 
           <p className="fs-4 fw-bold">Total Price: &#8377;{total}</p>
-          <button type="button" className="btn btn-success btn-lg d-block mx-auto">
+          <button type="submit" className="btn btn-success btn-lg d-block mx-auto">
             Order Now
           </button>
 

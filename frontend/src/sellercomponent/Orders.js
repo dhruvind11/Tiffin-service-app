@@ -1,38 +1,23 @@
 // Order.js
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import './Orders.css';
 import  Header from './Header' // Import the OrderDetailsModal component
 
 const Orders = () => {
   
-  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [orders, setOrders] = useState([]);
 
-  const orders = [
-   
-    {
-      id: 1,
-      customer: 'John Doe',
-      address: '123 Main Street, City, Country',
-      items: ['Item 1', 'Item 2'],
-      total: 25.99,
-    },
-    {
-      id: 1,
-      customer: 'John Doe',
-      address: '123 Main Street, City, Country',
-      items: ['Item 1', 'Item 2'],
-      total: 25.99,
-    },
-    {
-      id: 1,
-      customer: 'John Doe',
-      address: '123 Main Street, City, Country',
-      items: ['Item 1', 'Item 2'],
-      total: 25.99,
-    },
-    // Add more orders as needed
-  ];
- 
+  useEffect(() => {
+    // Fetch orders from the API when the component mounts
+    fetch('http://localhost:8080/api/v1/order/get-order')
+      .then((response) => response.json())
+      .then((data) => {
+        setOrders(data);
+        console.log('Fetched orders:', data);
+      })
+      .catch((error) => console.error('Error fetching orders:', error));
+  }, []);
+  
 
  return (<><Header/>
  <div>
@@ -40,16 +25,13 @@ const Orders = () => {
    <div className="orders-container">
      {orders.map((order) => (
        <div className="order-card" key={order.id}>
-         <h3>Order #{order.id}</h3>
-         <p>Customer: {order.customer}</p>
-         <p>Address: {order.address}</p> {/* Display the address */}
-         <p>Total: ${order.total.toFixed(2)}</p>
-         <button
-           className="view-details-button"
-          
-         >
-           View Details
-         </button>
+         <p><span className='fw-bold'>Customer:</span>{order.customerData.name}</p>
+         <p><span className='fw-bold'>Address:</span>{order.customerData.address}</p> 
+         <p><span className='fw-bold'>deliveryTime:</span>{order.deliveryTime}</p>
+         <p><span className='fw-bold'>mealPlan:</span>{order.mealPlan}</p>
+         <p><span className='fw-bold'>quantity:</span>{order.quantity}</p>
+         <p><span className='fw-bold'>cookingInstruction:</span>{order.cookingInstruction}</p>
+         
        </div>
      ))}
    </div>

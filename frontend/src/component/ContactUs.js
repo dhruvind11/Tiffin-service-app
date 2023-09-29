@@ -4,24 +4,24 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 function ContactPage() {
   // State for form fields
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   email: "",
+  //   message: "",
+  // });
 
-  // Handle form input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  // // Handle form input changes
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({ ...formData, [name]: value });
+  // };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // You can add code here to send the form data to your backend or perform other actions
-    console.log("Form Data:", formData);
-  };
+  // // Handle form submission
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // You can add code here to send the form data to your backend or perform other actions
+  //   console.log("Form Data:", formData);
+  // };
 
   return (
     <>
@@ -29,15 +29,14 @@ function ContactPage() {
     <div className="main-cont"><div className="contact-container " style={{"marginBottom":"4%","marginTop":"8%"}} >
       <h2>Contact Us</h2>
       <p>Have questions or feedback? Reach out to us!</p>
-      <form onSubmit={handleSubmit}>
+      <form action="mailto: ddobariya55@gmail.com">
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
             type="text"
             id="name"
             name="name"
-            value={formData.name}
-            onChange={handleInputChange}
+            
             required
           />
         </div>
@@ -47,8 +46,7 @@ function ContactPage() {
             type="email"
             id="email"
             name="email"
-            value={formData.email}
-            onChange={handleInputChange}
+            
             required
           />
         </div>
@@ -57,13 +55,12 @@ function ContactPage() {
           <textarea
             id="message"
             name="message"
-            value={formData.message}
-            onChange={handleInputChange}
+            
             rows="4"
             required
           ></textarea>
         </div>
-        <button type="submit" className=" d-block m-auto rounded-pill">Send message</button>
+        <button type="submit" className=" d-block m-auto rounded-pill" value="Send Email">Send message</button>
       </form>
     </div></div>
     <Footer/>
