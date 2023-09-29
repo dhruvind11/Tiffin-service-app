@@ -21,7 +21,8 @@ padding-left: 3px;
     border: none;
     font-size: 1.7rem;
 } */
-    
+    .container{
+    }
     .search {
         display: flex;
         align-items: center;

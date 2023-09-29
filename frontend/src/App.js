@@ -15,7 +15,7 @@ import Login from "./component/Login";
 import SignUp from "./component/SignUp";
 import PrivateComponent from "./component/PrivateComponent";
 import Profile from "./sellercomponent/Profile"
-
+import MyProfile from "./component/MyProfile";
 import MenuItemDetail from "./component/MenuItemDetails";
 
 import Header from "./sellercomponent/Header"
@@ -39,6 +39,7 @@ function App() {
         <Route path="/about" element={<About />} />{" "}
         <Route path="/contact" element={<ContactUs />} /> 
         <Route path="/myorder" element={<MyOrder />} />
+        <Route path="/myprofile" element={<MyProfile />} />
        
 </Route>
       </> }

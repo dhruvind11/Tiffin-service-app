@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { useState,useEffect } from 'react';
 import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import MyProfile from "./MyProfile";
 
 
 
@@ -47,10 +48,9 @@ function Navbar() {
       <Link to="/home">Home</Link>
 		<Link to="/about">About</Link>
 				<Link to="/contact">Contact Us</Link>
-				<Link to="/seller">Become to seller</Link>
 				<Link to="/myorder">My order</Link>
 				{auth?<Link to="/logout"onClick={logout} to="/login">Logout</Link>:<Link to="/login">Login</Link>
-}
+}				<Link to="/myprofile">My Profile</Link>
 				
 				
 

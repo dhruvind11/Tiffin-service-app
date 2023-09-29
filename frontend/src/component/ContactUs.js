@@ -26,7 +26,7 @@ function ContactPage() {
   return (
     <>
     <Navbar/>
-    <div className="contact-container " style={{"marginBottom":"4%","marginTop":"8%"}} >
+    <div className="main-cont"><div className="contact-container " style={{"marginBottom":"4%","marginTop":"8%"}} >
       <h2>Contact Us</h2>
       <p>Have questions or feedback? Reach out to us!</p>
       <form onSubmit={handleSubmit}>
@@ -65,7 +65,7 @@ function ContactPage() {
         </div>
         <button type="submit" className=" d-block m-auto rounded-pill">Send message</button>
       </form>
-    </div>
+    </div></div>
     <Footer/>
     </>
     
