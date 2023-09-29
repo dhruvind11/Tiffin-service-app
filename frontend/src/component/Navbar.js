@@ -19,6 +19,7 @@ function Navbar() {
 	  };
 	const navRef = useRef();
 	// const navigate = useNavigate();
+	const user=JSON.parse(localStorage.getItem("data")).name;
 	
 	const showNavbar = () => {
 		navRef.current.classList.toggle(
@@ -49,12 +50,13 @@ function Navbar() {
 		<Link to="/about">About</Link>
 				<Link to="/contact">Contact Us</Link>
 				<Link to="/myorder">My order</Link>
+				<Link to="/myprofile">My Profile</Link>
 				{auth?<Link to="/logout"onClick={logout} to="/login">Logout</Link>:<Link to="/login">Login</Link>
-}				<Link to="/myprofile">My Profile</Link>
+}				
 				
 				
 
-
+                  <p className="d-block m-auto">welcome {user}</p>
 
                 
 				
