@@ -3,7 +3,7 @@ const menu = require("../Model/menu");
 
 const addOrderController = async(req, res) => {
     const orderData = req.body;
-
+console.log(orderData);
 
     const newOrder = new order({
         menuItemId: orderData.menuItemId,
@@ -16,7 +16,10 @@ const addOrderController = async(req, res) => {
     });
 
     try {
+        console.log("ok1");
         const savedOrder = await newOrder.save();
+        console.log("ok2");
+
         res.json({ success: true, order: savedOrder });
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
