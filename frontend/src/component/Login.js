@@ -4,7 +4,7 @@ import '../App.css'
 import {Link} from 'react-router-dom'
 
 
-// Custom CSS for additional styling
+
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -30,8 +30,10 @@ function Login() {
    console.log(result);
    if(result.data.role==="seller"){
     window.location.href='/dashboard'
+    alert("login sucessfully");
    }else{
     window.location.href='/home'
+    alert("login sucessfully");
    }
    if(result.data){
      localStorage.setItem("user", JSON.stringify(result.token));
@@ -109,7 +111,7 @@ function Login() {
                   Login
                 </button>
                 <p className='pt-2 text-center'>
-             Don 't have an account?<Link to="/signup">create account</Link>
+             Don 't have an account?<Link to="/signup" className='text-white text-decoration-none'>create account</Link>
            </p>
               </form>
             </div>

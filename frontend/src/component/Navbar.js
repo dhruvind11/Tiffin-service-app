@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { useState,useEffect } from 'react';
 import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
-import MyProfile from "./MyProfile";
+// import MyProfile from "./MyProfile";
 
 
 
@@ -15,6 +15,7 @@ function Navbar() {
 	const auth=localStorage.getItem('user');
 	const logout = () => {
 		localStorage.clear();
+		window.confirm("logout confirm");
 		navigate("/login");
 	  };
 	const navRef = useRef();
@@ -26,30 +27,17 @@ function Navbar() {
 			"responsive_nav"
 		);
 	};
-  
- 
-    
 
-    // useEffect(() => {
-    //   const auth = localStorage.getItem("user");
-    //   if(auth){
-	// 	navigate("/home")
-	//   }
-    // });
-
-    
-   
-  
 	return (
 		<header className="fixed-top">
-      <div><Link to="/"className="logo fs-5">Taste Treasure</Link></div>
+      <div><Link to="/home"className="logo fs-5">TiffinDelights</Link></div>
 			<div>
 
       <nav ref={navRef}>
       <Link to="/home">Home</Link>
 		<Link to="/about">About</Link>
 				<Link to="/contact">Contact Us</Link>
-				<Link to="/myorder">My order</Link>
+				
 				<Link to="/myprofile">My Profile</Link>
 				{auth?<Link to="/logout"onClick={logout} to="/login">Logout</Link>:<Link to="/login">Login</Link>
 }				
@@ -57,11 +45,6 @@ function Navbar() {
 				
 
                   <p className="d-block m-auto">welcome {user}</p>
-
-                
-				
-        
-		
 		{/* <Button variant="danger">Add to Cart</Button> */}
 				<button
 					className="nav-btn nav-close-btn"

@@ -12,7 +12,7 @@ function About() {
      <h1> welcome to our website </h1>{" "}
      <p className="fs-5 pt-2">
        {" "}
-       The‘ Taste Treasure’(Tiffin Service Marketplace) is an online platform
+       The‘ TiffinDelights’(Tiffin Service Marketplace) is an online platform
        that allows users to search and order homemade meals from local tiffin
        service providers.Ours aims to provide users with an easy and
        convenient way to find and order healthy, home - cooked meals while

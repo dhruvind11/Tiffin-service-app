@@ -6,14 +6,20 @@ import  Header from './Header' // Import the OrderDetailsModal component
 const Orders = () => {
   
   const [orders, setOrders] = useState([]);
-
+  const sellerId=JSON.parse(localStorage.getItem("data"))._id;
+ 
   useEffect(() => {
     // Fetch orders from the API when the component mounts
     fetch('http://localhost:8080/api/v1/order/get-order')
       .then((response) => response.json())
       .then((data) => {
-        setOrders(data);
-        console.log('Fetched orders:', data);
+      
+        const filteredOrders = data.filter((element) => element.sellerData._id === sellerId);
+
+      // Set the filtered orders
+      setOrders(filteredOrders);
+      //  } 
+        
       })
       .catch((error) => console.error('Error fetching orders:', error));
   }, []);

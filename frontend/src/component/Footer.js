@@ -8,7 +8,7 @@ function Footer() {
   return (
     <div className='container-fluid' style={{backgroundColor: "#3a8b6c"}}>
         <div className="container text-white">
-        <h1 className='text-center'>TasteTreasure</h1>
+        <h1 className='text-center'>TiffinDelights</h1>
       <div className="row mt-3">
         <div className="col-md-4">
             <h4>Quick links</h4>
