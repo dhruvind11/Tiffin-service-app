@@ -3,7 +3,7 @@ const menu = require("../Model/menu");
 
 const addOrderController = async(req, res) => {
     const orderData = req.body;
-console.log(orderData);
+    console.log(orderData);
 
     const newOrder = new order({
         menuItemId: orderData.menuItemId,
