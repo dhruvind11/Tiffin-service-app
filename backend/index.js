@@ -22,10 +22,10 @@ app.use(morgan('dev'))
 // });
 
 
-app.use("/api/v1/auth", require('./Route/authRoute'))
-app.use("/api/v1/menu", require('./Route/menuRoute'))
-app.use("/api/v1/order", require('./Route/orderRoute'))
-app.use("/api/v1/pay", require('./Route/checkoutRoute'))
+app.use("/api/v1/auth", require('./routes/authRoute'))
+app.use("/api/v1/menu", require('./routes/menuRoute'))
+app.use("/api/v1/order", require('./routes/orderRoute'))
+app.use("/api/v1/pay", require('./routes/checkoutRoute'))
 
 
 const PORT = process.env.PORT || 8080;
