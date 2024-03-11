@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+// import toast, { Toaster } from 'react-hot-toast';
 import axios from "axios";
 import './MenuItem.css';
 
@@ -72,7 +72,7 @@ const MenuItemDetail = () => {
             order_id: orderData.orderId,
             handler: function (response) {
               console.log("Payment successful:", response);
-              toast.success("order Placed")
+              // toast.success("order Placed")
               navigate('/')
             },
           };
@@ -312,7 +312,7 @@ const MenuItemDetail = () => {
 
         </div>
       </div>
-<Toaster/>
+{/* <Toaster/> */}
 
 
 
