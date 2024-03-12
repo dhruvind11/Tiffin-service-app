@@ -27,7 +27,7 @@ function SignUp() {
         setPhoneNumberError(''); // Clear the error if the phone number is valid
       }
       console.log(role,name,sellerName,email,password,confirmPassword,phoneNumber,address)
-   let result = await fetch("http://localhost:8080/api/v1/auth/register",{
+   let result = await fetch(`${process.env.REACT_APP_API_URL}/auth/register`,{
     method:'post',
     body:JSON.stringify({role,name,sellerName,email,password,confirmPassword,phoneNumber,address}),
     headers:{

@@ -11,7 +11,7 @@ const EditMenu = () => {
    
     const fetchMenuItems = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/v1/menu/get-menu-item');
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/menu/get-menu-item`);
         if (response.ok) {
           const data = await response.json();
           setMenuItems(data);
@@ -35,7 +35,7 @@ const EditMenu = () => {
   const handleDelete = (itemId) => {
     const deleteMenuItem = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/v1/menu/delete-menu-item/${itemId}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/menu/delete-menu-item/${itemId}`, {
           method: 'DELETE',
         });
         if (response.ok) {
@@ -56,7 +56,7 @@ const EditMenu = () => {
      
       const updateMenuItem = async () => {
         try {
-          const response = await fetch(`http://localhost:8080/api/v1/menu/update-menu-item/${selectedItem._id}`, {
+          const response = await fetch(`${process.env.REACT_APP_API_URL}/menu/update-menu-item/${selectedItem._id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ const EditMenu = () => {
       
       const addMenuItem = async () => {
         try {
-          const response = await fetch('http://localhost:8080/api/v1/menu/add-menu-item', {
+          const response = await fetch(`${process.env.REACT_APP_API_URL}/menu/add-menu-item`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

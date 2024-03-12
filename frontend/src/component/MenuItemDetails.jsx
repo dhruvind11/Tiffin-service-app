@@ -52,40 +52,40 @@ const MenuItemDetail = () => {
     console.log(formData);
     
 
-      try {
-        const response = await axios.post("http://localhost:8080/api/v1/pay/creatorder", {
-          amount: menuItem.price * quantity * 100, // Convert total to paise
-          currency: "INR",
-        });
+      // try {
+      //   const response = await axios.post("http://localhost:8080/api/v1/pay/creatorder", {
+      //     amount: menuItem.price * quantity * 100, // Convert total to paise
+      //     currency: "INR",
+      //   });
 
-        const orderData = response.data;
-        console.log(orderData);
-        setOrderData(orderData);
+      //   const orderData = response.data;
+      //   console.log(orderData);
+      //   setOrderData(orderData);
 
-        if (orderData.id) {
-          const razorpayOptions = {
-            key: "rzp_test_2Mr5UneituKZXx",
-            amount: orderData.amount,
-            currency: orderData.currency,
-            name: "Your Company Name",
-            description: "Payment for your order",
-            order_id: orderData.orderId,
-            handler: function (response) {
-              console.log("Payment successful:", response);
-              // toast.success("order Placed")
-              navigate('/')
-            },
-          };
+      //   if (orderData.id) {
+      //     const razorpayOptions = {
+      //       key: "rzp_test_2Mr5UneituKZXx",
+      //       amount: orderData.amount,
+      //       currency: orderData.currency,
+      //       name: "Your Company Name",
+      //       description: "Payment for your order",
+      //       order_id: orderData.orderId,
+      //       handler: function (response) {
+      //         console.log("Payment successful:", response);
+      //         // toast.success("order Placed")
+      //         navigate('/')
+      //       },
+      //     };
 
-          const paymentObject = new window.Razorpay(razorpayOptions);
-          paymentObject.open();
-        }
-      } catch (error) {
-        console.error("Error creating Razorpay order:", error);
-      }
+      //     const paymentObject = new window.Razorpay(razorpayOptions);
+      //     paymentObject.open();
+      //   }
+      // } catch (error) {
+      //   console.error("Error creating Razorpay order:", error);
+      // }
     
 
-   await axios.post('http://localhost:8080/api/v1/order/add-order', formData)
+   await axios.post(`${process.env.REACT_APP_API_URL}/order/add-order`, formData)
       .then(response => {
         console.log('Order placed successfully:', response.data);
         alert("Order placed successfully");
@@ -110,7 +110,7 @@ const MenuItemDetail = () => {
 
   useEffect(() => {
 
-    axios.get(`http://localhost:8080/api/v1/menu/getById/${itemId}`).then(response => {
+    axios.get(`${process.env.REACT_APP_API_URL}/menu/getById/${itemId}`).then(response => {
       setMenuItem(response.data);
       console.log(response.data.seller);
     })

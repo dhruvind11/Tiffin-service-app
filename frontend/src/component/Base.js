@@ -5,8 +5,6 @@ import Footer from "./Footer";
 function Base() {
   return (
     <div>
-      
-   
         <Main/>
         <Footer/>
     </div>

@@ -10,7 +10,7 @@ const Orders = () => {
  
   useEffect(() => {
     // Fetch orders from the API when the component mounts
-    fetch('http://localhost:8080/api/v1/order/get-order')
+    fetch(`${process.env.REACT_APP_API_URL}/order/get-order`)
       .then((response) => response.json())
       .then((data) => {
       

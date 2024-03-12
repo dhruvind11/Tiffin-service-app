@@ -39,7 +39,7 @@ const seller = sellerData ? sellerData._id : null;
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/v1/menu/add-menu-item",
+        `${process.env.REACT_APP_API_URL}/menu/add-menu-item`,
         formData,
         {
           headers: {
