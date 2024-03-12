@@ -18,7 +18,7 @@ function Login() {
     e.preventDefault();
     try {
       console.log(role,email,password)
-   let result = await fetch("http://localhost:8080/api/v1/auth/login",{
+   let result = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`,{
     method:'post',
     body:JSON.stringify({role,email,password}),
     headers:{
